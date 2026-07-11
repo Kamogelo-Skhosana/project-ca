@@ -1,8 +1,26 @@
 import Link from 'next/link';
-import { APP_NAME } from '@/lib/config';
 import { Button } from '@/components/ui/Button';
 import { Card } from '@/components/ui/Card';
 import { Badge } from '@/components/ui/Badge';
+
+// Define prop types for helper components
+interface CodePanelProps {
+  title: string;
+  badge: string;
+  code: string;
+  className?: string;
+}
+
+interface StepCardProps {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface MetricCardProps {
+  title: string;
+  description: string;
+}
 
 export default function HomePage() {
   return (
@@ -98,8 +116,8 @@ export default function HomePage() {
   );
 }
 
-// Helper components (can be moved to separate files)
-function CodePanel({ title, badge, code, className }: any) {
+// Helper components with proper typing
+function CodePanel({ title, badge, code, className }: CodePanelProps) {
   return (
     <div className={`rounded-xl border p-4 ${className}`}>
       <div className="flex justify-between items-center mb-2">
@@ -113,7 +131,7 @@ function CodePanel({ title, badge, code, className }: any) {
   );
 }
 
-function StepCard({ number, title, description }: any) {
+function StepCard({ number, title, description }: StepCardProps) {
   return (
     <Card className="p-6 text-center">
       <div className="text-4xl font-bold text-emerald-500 mb-2">{number}</div>
@@ -123,7 +141,7 @@ function StepCard({ number, title, description }: any) {
   );
 }
 
-function MetricCard({ title, description }: any) {
+function MetricCard({ title, description }: MetricCardProps) {
   return (
     <Card className="p-6 text-left">
       <h4 className="font-semibold text-lg mb-1">{title}</h4>
