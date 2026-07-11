@@ -1,0 +1,43 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: TypeScript type check
+        run: npx tsc --noEmit
+
+      - name: ESLint
+        run: npm run lint
+
+      # No explicit Vercel deployment step – it is handled automatically
+      # by the Vercel GitHub integration, which deploys the latest commit
+      # on the main branch. This integration is configured in the Vercel
+      # dashboard (Project Settings → Git).
+      #
+      # The workflow only validates that the code is healthy before the
+      # integration deploys it. If validation fails, the deployment will
+      # still occur unless you set up Vercel's "Ignore Build Step" to
+      # check the workflow status (optional).
+
+      # TODO: Uncomment when Docker server deployment is needed
+      # - name: Deploy Docker execution server
+      #   run: |
+      #     # Example: deploy to a container registry or restart service
+      #     echo "Deploy Docker server here"
