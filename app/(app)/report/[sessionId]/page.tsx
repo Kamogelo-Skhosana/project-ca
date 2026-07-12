@@ -1,3 +1,13 @@
-export default function ReportPage({ params }: { params: { sessionId: string } }) {
-  return <div><h1>Report for {params.sessionId}</h1></div>;
+export default async function ReportPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+
+  return (
+    <div>
+      <h1 className="text-2xl font-bold">Report for {id}</h1>
+    </div>
+  );
 }
