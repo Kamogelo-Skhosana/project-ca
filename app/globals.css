@@ -1,0 +1,55 @@
+/* Tailwind CSS v4 – CSS‑first configuration */
+@import "tailwindcss";
+
+/* Brand palette as CSS custom properties */
+:root {
+  --color-black: #0A0A0A;
+  --color-white: #FAFAFA;
+  --color-emerald: #10B981;
+  --color-emerald-50: #ECFDF5;
+  --color-emerald-100: #D1FAE5;
+  --color-emerald-200: #A7F3D0;
+  --color-emerald-300: #6EE7B7;
+  --color-emerald-400: #34D399;
+  --color-emerald-500: #10B981;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+  --color-emerald-800: #065F46;
+  --color-emerald-900: #064E3B;
+}
+
+/* Light theme (default) */
+:root {
+  --background: var(--color-white);
+  --foreground: var(--color-black);
+  --card-bg: #FFFFFF;
+  --border: #E5E7EB;
+  --muted: #F3F4F6;
+}
+
+/* Dark theme – applied via `dark` class on <html> */
+.dark {
+  --background: var(--color-black);
+  --foreground: var(--color-white);
+  --card-bg: #1A1A1A;
+  --border: #374151;
+  --muted: #1F2937;
+}
+
+/* Base styles */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Utility shortcuts for emerald (if needed) */
+.bg-emerald-500 {
+  background-color: var(--color-emerald-500);
+}
+.text-emerald-500 {
+  color: var(--color-emerald-500);
+}
+.border-emerald-500 {
+  border-color: var(--color-emerald-500);
+}
