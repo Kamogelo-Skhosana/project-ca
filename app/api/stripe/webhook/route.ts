@@ -14,16 +14,14 @@ export async function POST(req: Request) {
       sig,
       process.env.STRIPE_WEBHOOK_SECRET!
     );
-  } catch (_err) {
+  } catch {
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
   }
 
-  // Handle the event
   switch (event.type) {
     case 'checkout.session.completed':
       // Update user tier in database
       break;
-    // other events...
   }
 
   return NextResponse.json({ received: true });
