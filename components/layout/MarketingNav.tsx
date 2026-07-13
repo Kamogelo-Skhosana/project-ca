@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { APP_NAME } from '@/lib/config';
 import ThemeToggle from '@/components/theme-toggle';
+import { Button } from "@/components/ui/Button";
 
 export default function MarketingNav() {
   return (
@@ -15,6 +16,9 @@ export default function MarketingNav() {
           <Link href="/login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition">
             Sign in
           </Link>
+          <Button asChild size="sm" className="bg-emerald-500 hover:bg-emerald-600 text-white">
+            <Link href="/signup">Start free</Link>
+          </Button>
           <ThemeToggle />
         </nav>
       </div>
