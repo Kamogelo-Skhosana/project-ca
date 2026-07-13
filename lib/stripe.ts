@@ -18,9 +18,7 @@ export function getStripe() {
   return stripeInstance;
 }
 
-// For backward compatibility with existing imports
-export const stripe = getStripe();
-
+// No top-level call to getStripe() — safe for build
 export const PRICE_IDS = {
   pro_monthly: process.env.STRIPE_PRO_MONTHLY_PRICE_ID!,
   pro_yearly: process.env.STRIPE_PRO_YEARLY_PRICE_ID!,
