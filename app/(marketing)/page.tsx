@@ -102,6 +102,17 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Pricing preview */}
+      <section className="max-w-4xl mx-auto text-center space-y-4 py-8">
+        <h2 className="text-2xl font-semibold">Free to start</h2>
+        <p className="text-muted-foreground">
+          Get started with our Free tier. Upgrade to Pro for full analytics and no ads.
+        </p>
+        <Button asChild variant="outline" className="border-emerald-500 text-emerald-600">
+          <Link href="/pricing">See pricing →</Link>
+        </Button>
+      </section>
+
       {/* Final CTA */}
       <section className="text-center py-12">
         <Card className="max-w-2xl mx-auto p-8 bg-muted/30 border-border/50">

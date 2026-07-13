@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import ThemeToggle from '@/components/theme-toggle';
 import { APP_NAME } from '@/lib/config';
 import { Menu, X, LayoutDashboard, Flag, Settings } from 'lucide-react';
+import AdBar from './AdBar';
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -41,6 +42,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
             );
           })}
         </nav>
+        <AdBar />
         <div className="pt-4 border-t border-border/40">
           <ThemeToggle />
         </div>

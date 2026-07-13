@@ -28,6 +28,9 @@ jobs:
 
       - name: Build (catch build errors)
         run: npm run build
+        env:
+          NEXT_PUBLIC_SUPABASE_URL: ${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}
+          NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: ${{ secrets.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY }}
 
       # TODO: Uncomment when Docker execution server is added in Stage 3
       # - name: Build and test Docker execution server
