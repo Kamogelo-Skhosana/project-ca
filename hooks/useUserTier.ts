@@ -1,7 +1,5 @@
-'use client';
-
 import { useEffect, useState } from 'react';
-import { getSupabaseClient } from '@/lib/supabaseClient';
+import { supabase } from '@/lib/supabaseClient';
 
 export function useUserTier() {
   const [tier, setTier] = useState<string | null>(null);
@@ -9,25 +7,18 @@ export function useUserTier() {
 
   useEffect(() => {
     const fetchTier = async () => {
-      try {
-        const supabase = getSupabaseClient();
-        const { data: { user } } = await supabase.auth.getUser();
-        if (user) {
-          const { data: profile } = await supabase
-            .from('profiles')
-            .select('tier')
-            .eq('id', user.id)
-            .single();
-          setTier(profile?.tier || 'free');
-        } else {
-          setTier(null);
-        }
-      } catch (error) {
-        console.error('Error fetching user tier:', error);
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from('profiles')
+          .select('tier')
+          .eq('id', user.id)
+          .single();
+        setTier(profile?.tier || 'free');
+      } else {
         setTier(null);
-      } finally {
-        setIsLoading(false);
       }
+      setIsLoading(false);
     };
     fetchTier();
   }, []);
