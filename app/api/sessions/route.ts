@@ -5,7 +5,7 @@ export async function GET() {
   return NextResponse.json({ sessions: [] });
 }
 
-export async function POST(req: Request) {
+export async function POST(_req: Request) {
   // Placeholder for creating a session
   return NextResponse.json({ message: 'Session created' });
 }
